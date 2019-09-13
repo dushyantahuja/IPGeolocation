@@ -1,0 +1,20 @@
+{
+  "name": "IPGeolocation",
+  "keywords": "IP,Geolocation, Timezone, Time, Location",
+  "description": "Library to get current timezone using your IP - uses IPGeolocation.io",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/dushyantahuja/IPGeolocation.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Dushyant Ahuja",
+      "maintainer": true
+    }
+  ],
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": "espressif8266"
+}
