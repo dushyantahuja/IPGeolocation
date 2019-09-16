@@ -1,6 +1,6 @@
 /*
-  TFLStatus.cpp - Library to get tube status from the TFL API
-  Created by Dushyant Ahuja, July 2019.
+  TFLStatus.cpp - Library to get Geolocation data from IPGeolocation.io
+  Created by Dushyant Ahuja, September 2019.
   Released into the public domain.
 */
 
@@ -28,5 +28,3 @@ class IPGeolocation
 };
 
 #endif
-
-
