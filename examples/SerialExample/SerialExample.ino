@@ -19,6 +19,7 @@ IPGeolocation location(Key);
 
 void setup() {
   // put your setup code here, to run once:
+  Serial.begin(9600);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   if (WiFi.waitForConnectResult() != WL_CONNECTED) {
