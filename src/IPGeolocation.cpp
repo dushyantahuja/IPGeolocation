@@ -17,7 +17,8 @@ IPGeolocation::IPGeolocation(String Key){
 }
 
 void IPGeolocation::updateStatus(){
-  httpsClient.setFingerprint(fingerprint);
+  //httpsClient.setFingerprint(fingerprint);
+  httpsClient.setInsecure();
   httpsClient.setTimeout(15000); // 15 Seconds
   delay(1000);
 
