@@ -1,10 +1,22 @@
 # IPGeolocation
+
+Get API Key by registering on 
+https://ipgeolocation.io/documentation/timezone-api.html
+
 A small library for an ESP8266 to pull timezone information using IPGeolocation.io
 Please note, this version changes the way the library works. There is now a struct that you need to use - as the class does not save any values anymore. I felt this was more extensible. Sorry if I broke something.
 
-Get API Key by registering on 
-
-https://ipgeolocation.io/documentation/timezone-api.html
+The new struct is:
+```C++
+struct IPGeo {
+  String tz;
+  int offset;
+  String city;
+  String country;
+  String country_code;
+};
+```
+Example Code
 
 ```C++
 const char * ssid = "***********";
