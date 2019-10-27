@@ -7,11 +7,13 @@
 #ifndef IPGeolocation_h
 #define IPGeolocation_h
 
-#ifndef DEBUG_PRINT(x)
-  #ifdef DEBUG
-    #define DEBUG_PRINT(x)  Serial.println (x)
-  #else
-    #define DEBUG_PRINT(x)
+#ifdef DEBUG
+  #ifndef DEBUGPRINT(x)
+    #define DEBUGPRINT(x)  Serial.println(x)
+  #endif
+#else
+  #ifndef DEBUGPRINT(x)
+    #define DEBUGPRINT(x)
   #endif
 #endif
 
@@ -24,13 +26,15 @@ struct IPGeo {
   String city;
   String country;
   String country_code;
+  bool is_dst;
 };
 
 class IPGeolocation
 {
   public:
-    IPGeolocation(String Key); 
+    IPGeolocation(String Key);
     void updateStatus(IPGeo *I);
+    String getResponse();
   private:
     String _Key;
     String _Response;

@@ -1,17 +1,18 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include "IPGeolocation.h"
 
 #define DEBUG
+#include "IPGeolocation.h"
+
 
 // Replace with your wifi credentials
-const char * ssid = "***********";
-const char * password = "***********";
+const char * ssid = "****";
+const char * password = "****";
 
 // Get an API Key by registering on
 // https://ipgeolocation.io
 
-String Key = "*************";
+String Key = "****";
 
 void setup() {
   // put your setup code here, to run once:
@@ -35,6 +36,7 @@ void loop() {
   Serial.println(IPG.country_code);
   Serial.println(IPG.tz);
   Serial.println(IPG.offset);
+  Serial.println(location.getResponse());
 
   delay(600000);       // Wait for 600 seconds
   // put your main code here, to run repeatedly:
