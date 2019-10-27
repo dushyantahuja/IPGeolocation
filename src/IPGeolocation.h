@@ -7,12 +7,10 @@
 #ifndef IPGeolocation_h
 #define IPGeolocation_h
 
-#ifdef DEBUG
-  #ifndef DEBUGPRINT(x)
-    #define DEBUGPRINT(x)  Serial.println(x)
-  #endif
-#else
-  #ifndef DEBUGPRINT(x)
+#ifndef DEBUGPRINT
+  #ifdef DEBUG
+    #define DEBUGPRINT(x)  Serial.println (x)
+  #else
     #define DEBUGPRINT(x)
   #endif
 #endif
