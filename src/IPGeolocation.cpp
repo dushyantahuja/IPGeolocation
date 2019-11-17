@@ -6,11 +6,6 @@
 
 //const char fingerprint[] PROGMEM = "AC 06 70 3C 86 04 60 22 06 BE E5 11 A5 37 DB 7D 86 92 4E 1C"; // fingerprint not required anymore as Insecure connection used
 
-const size_t capacity = JSON_OBJECT_SIZE(10) + JSON_OBJECT_SIZE(17) + 580;
-String line;
-const char *host = "api.ipgeolocation.io";
-const int httpsPort = 443;  //HTTPS= 443 and HTTP = 80
-WiFiClientSecure httpsClient;
 
 IPGeolocation::IPGeolocation(String Key){
   _Key = Key;
@@ -21,6 +16,10 @@ String IPGeolocation::getResponse(){
 }
 
 void IPGeolocation::updateStatus(IPGeo *I){
+  const char *host = "api.ipgeolocation.io";
+  const int httpsPort = 443;  //HTTPS= 443 and HTTP = 80
+  WiFiClientSecure httpsClient;
+  const size_t capacity = JSON_OBJECT_SIZE(10) + JSON_OBJECT_SIZE(17) + 580;
   //httpsClient.setFingerprint(fingerprint);
   httpsClient.setInsecure();
   httpsClient.setTimeout(15000); // 15 Seconds
