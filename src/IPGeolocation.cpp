@@ -73,6 +73,8 @@ void IPGeolocation::updateStatus(IPGeo *I){
   I->country = doc["geo"]["country_name"].as<String>();
   I->country_code = doc["geo"]["country_code2"].as<String>();
   I->city = doc["geo"]["city"].as<String>();
+  I->latitude = doc["geo"]["latitude"];
+  I->longitude = doc["geo"]["longitude"];
 
   DEBUGPRINT("Time Zone: ");
   DEBUGPRINT(I->tz);

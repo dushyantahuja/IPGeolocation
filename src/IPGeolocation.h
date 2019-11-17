@@ -25,6 +25,8 @@ struct IPGeo {
   String country;
   String country_code;
   bool is_dst;
+  double latitude;
+  double longitude;
 };
 
 class IPGeolocation
