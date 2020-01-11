@@ -20,7 +20,7 @@
 
 struct IPGeo {
   String tz;
-  int offset;
+  double offset;
   String city;
   String country;
   String country_code;
