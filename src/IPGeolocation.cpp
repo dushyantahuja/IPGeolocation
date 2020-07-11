@@ -68,7 +68,7 @@ void IPGeolocation::updateStatus(IPGeo *I){
   I->is_dst = doc["is_dst"];
   int dst_savings = doc["dst_savings"].as<int>();
   double timezone_offset = doc["timezone_offset"];
-  I->offset= timezone_offset; //+ ((I->is_dst) ? dst_savings : 0);
+  I->offset= timezone_offset + ((I->is_dst) ? dst_savings : 0);
   I->country = doc["geo"]["country_name"].as<String>();
   I->country_code = doc["geo"]["country_code2"].as<String>();
   I->city = doc["geo"]["city"].as<String>();
