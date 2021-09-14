@@ -3,8 +3,23 @@
 Get API Key by registering on 
 https://ipgeolocation.io/documentation/timezone-api.html
 
-A small library for an ESP8266 to pull timezone information using IPGeolocation.io
-Please note, this version changes the way the library works. There is now a struct that you need to use - as the class does not save any values anymore. I felt this was more extensible. Sorry if I broke something.
+OR
+
+https://app.abstractapi.com/api/ip-geolocation/
+
+
+A small library for an ESP8266 to pull timezone information using IPGeolocation.io and app.abstractapi.com/api/ip-geolocation. 
+
+The API can be chosen using the constructor as follows:
+
+```
+IPGeolocation location(Key);              // Defaults to IPGeolocation.io 
+IPGeolocation location(Key, "IPG");       // For IPGeolocation.io 
+IPGeolocation location(Key, "ABSTRACT");  // For app.abstractapi.com/api/ip-geolocation
+```
+
+
+Please note, version 2 had changed the way the library works. There is now a struct that you need to use - as the class does not save any values anymore. I felt this was more extensible. Sorry if I broke something.
 
 The new struct is:
 ```C++

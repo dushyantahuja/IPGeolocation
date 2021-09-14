@@ -33,11 +33,13 @@ class IPGeolocation
 {
   public:
     IPGeolocation(String Key);
+    IPGeolocation(String Key, String API); // Use IPG for api.ipgeolocation.io and ABSTRACT for app.abstractapi.com/api/ip-geolocation
     void updateStatus(IPGeo *I);
     String getResponse();
   private:
     String _Key;
     String _Response;
+    String _API;
 };
 
 #endif

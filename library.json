@@ -1,7 +1,7 @@
 {
   "name": "IPGeolocation",
   "keywords": "IP,Geolocation, Timezone, Time, Location",
-  "description": "Library to get current timezone using your IP - uses IPGeolocation.io - Not backward compatible",
+  "description": "Library to get current timezone using your IP - uses IPGeolocation.io or app.abstractapi.com/api/ip-geolocation",
   "repository":
   {
     "type": "git",
@@ -14,7 +14,7 @@
       "maintainer": true
     }
   ],
-  "version": "2.1.5",
+  "version": "3.0.0",
   "frameworks": "arduino",
   "platforms": "espressif8266"
 }

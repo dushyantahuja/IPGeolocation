@@ -11,6 +11,9 @@ const char * password = "****";
 
 // Get an API Key by registering on
 // https://ipgeolocation.io
+// OR
+// https://app.abstractapi.com/api/ip-geolocation/
+
 
 String Key = "****";
 
@@ -25,10 +28,7 @@ void setup() {
           delay(1000);
       }
   }
-}
-
-void loop() {
-  IPGeolocation location(Key);
+  IPGeolocation location(Key,"ABSTRACT");
   IPGeo IPG;
   location.updateStatus(&IPG);
   Serial.println(IPG.city);
@@ -37,7 +37,8 @@ void loop() {
   Serial.println(IPG.tz);
   Serial.println(IPG.offset);
   Serial.println(location.getResponse());
+}
 
-  delay(600000);       // Wait for 600 seconds
-  // put your main code here, to run repeatedly:
+void loop() {
+  
 }
