@@ -1,5 +1,5 @@
 /*
-  IPGeolocation.cpp - Library to get Geolocation data from IPGeolocation.io
+  IPGeolocation.cpp - Library to get Geolocation data from https://IPGeolocation.io or https://app.abstractapi.com/api/ip-geolocation/
   Created by Dushyant Ahuja, September 2019.
   Released into the public domain.
 */
