@@ -1,5 +1,13 @@
 #include "Arduino.h"
-#include <ESP8266WiFi.h>
+
+#ifdef ESP8266
+  #include <ESP8266WIFI.h>
+#elif defined(ESP32)
+  #include <WiFi.h>
+#else
+  #error "Not a ESP8266 or ESP32 MCU"
+#endif
+
 #include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 #include "IPGeolocation.h"
