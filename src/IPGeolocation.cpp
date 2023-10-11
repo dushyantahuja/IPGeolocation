@@ -87,7 +87,10 @@ void IPGeolocation::updateStatus(IPGeo *I){
     DynamicJsonDocument doc(capacity);
     deserializeJson(doc, _Response);
     JsonObject timezone = doc["timezone"];
+    JsonObject connection = doc["connection"];
+    JsonObject flag = doc["flag"];
     I->tz = timezone["name"].as<String>();
+    I->abbreviation = timezone["abbreviation"].as<String>();
     I->is_dst = timezone["is_dst"];
     I->offset= timezone["gmt_offset"];
     I->country = doc["country"].as<String>();
@@ -95,6 +98,9 @@ void IPGeolocation::updateStatus(IPGeo *I){
     I->city = doc["city"].as<String>();
     I->latitude = doc["latitude"];
     I->longitude = doc["longitude"];
+    I->ip_address = doc["ip_address"].as<String>();
+    I->isp_name = connection["isp_name"].as<String>();
+    I->flag_png = flag["png"].as<String>();
 
     DEBUGPRINT("Time Zone: ");
     DEBUGPRINT(I->tz);
