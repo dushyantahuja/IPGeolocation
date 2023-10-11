@@ -27,6 +27,9 @@ struct IPGeo {
   bool is_dst;
   double latitude;
   double longitude;
+  String ip_address;
+  String isp_name;
+  String flag_png;
 };
 
 class IPGeolocation
