@@ -27,7 +27,7 @@ String IPGeolocation::getResponse(){
 
 void IPGeolocation::updateStatus(IPGeo *I){
   if(_API == "ABSTRACT"){
-    const char *host = "app.abstractapi.com";
+    const char *host = "ipgeolocation.abstractapi.com";
     const int httpsPort = 443;  //HTTPS= 443 and HTTP = 80
     WiFiClientSecure httpsClient;
     const size_t capacity = 2048;
@@ -47,18 +47,27 @@ void IPGeolocation::updateStatus(IPGeo *I){
     String Link;
 
     //GET Data
-    Link = "/v1/?api_key=="+_Key;
+    Link = "/v1/?api_key="+_Key;
 
     DEBUGPRINT("requesting URL: ");
     DEBUGPRINT(host+Link);
 
     httpsClient.print(String("GET ") + Link + " HTTP/1.1\r\n" +
-                "Host: " + host + "\r\n" +
-                "Connection: close\r\n\r\n");
+             "Host: " + host + "\r\n" +
+             "Connection: close\r\n\r\n");
 
     DEBUGPRINT("request sent");
 
-    while (httpsClient.connected()) {
+    int timeout = millis() + 5000;
+    while (httpsClient.available() == 0) {
+      if (timeout - millis() < 0) {
+        DEBUGPRINT(">>> client timeout !");
+        httpsClient.stop();
+        return;
+      }
+    }
+
+    while (httpsClient.available()) {  // changed from .connected()
       String _Response = httpsClient.readStringUntil('\n');
       if (_Response == "\r") {
         DEBUGPRINT("headers received");
@@ -66,17 +75,22 @@ void IPGeolocation::updateStatus(IPGeo *I){
         break;
       }
     }
+
     DEBUGPRINT("reply was:");
     DEBUGPRINT("==========");
     //httpsClient.readStringUntil('\n'); // The API sends an extra line with just a number. This breaks the JSON parsing, hence an extra read
-    while(httpsClient.connected()){
+    while(httpsClient.available()){  // changed from .connected()
       _Response = httpsClient.readString();
       DEBUGPRINT(_Response); //Print response
     }
+
     DynamicJsonDocument doc(capacity);
     deserializeJson(doc, _Response);
     JsonObject timezone = doc["timezone"];
+    JsonObject connection = doc["connection"];
+    JsonObject flag = doc["flag"];
     I->tz = timezone["name"].as<String>();
+    I->abbreviation = timezone["abbreviation"].as<String>();
     I->is_dst = timezone["is_dst"];
     I->offset= timezone["gmt_offset"];
     I->country = doc["country"].as<String>();
@@ -84,6 +98,9 @@ void IPGeolocation::updateStatus(IPGeo *I){
     I->city = doc["city"].as<String>();
     I->latitude = doc["latitude"];
     I->longitude = doc["longitude"];
+    I->ip_address = doc["ip_address"].as<String>();
+    I->isp_name = connection["isp_name"].as<String>();
+    I->flag_png = flag["png"].as<String>();
 
     DEBUGPRINT("Time Zone: ");
     DEBUGPRINT(I->tz);
