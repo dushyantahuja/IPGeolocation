@@ -16,7 +16,6 @@
 #endif
 
 #include "Arduino.h"
-#include <ESP8266WiFi.h>
 
 struct IPGeo {
   String tz;
@@ -30,6 +29,7 @@ struct IPGeo {
   String ip_address;
   String isp_name;
   String flag_png;
+  String abbreviation;
 };
 
 class IPGeolocation
